@@ -14,4 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'ProductController@productlist')->name('products');
+Route::get('/', 'ProductController@productlist')->name('home');
+
+Route::get('/pagina-1', function() {
+    return view('pageone');
+})->name('pagina-1');
+Route::get('/pagina-2', function() {
+    return view('pagetwo');
+})->name('pagina-2');
+
