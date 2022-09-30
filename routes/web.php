@@ -1,5 +1,6 @@
 <?php
 
+use App\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $products = Product::all();
+
+    return view('products', ['products' => $products]);
+})->name('products');
