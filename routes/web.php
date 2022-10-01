@@ -23,3 +23,7 @@ Route::get('/pagina-2', function() {
     return view('pagetwo');
 })->name('pagina-2');
 
+
+Route::get('/prove3', 'ProveController@paginaProve')->name('prove-pagina-3');
+
+
