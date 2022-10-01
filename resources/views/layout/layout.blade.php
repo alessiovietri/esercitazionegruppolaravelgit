@@ -24,6 +24,10 @@
         <li>
             <a href="{{ route('pagina-2') }}">Pagina 2</a>
         </li>
+
+        <li>
+            <a href="{{ route('pagina-4') }}">Pagina 4</a>
+        </li>
     </ul>
 
     <main>

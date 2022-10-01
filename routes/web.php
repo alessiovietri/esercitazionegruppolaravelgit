@@ -23,3 +23,6 @@ Route::get('/pagina-2', function() {
     return view('pagetwo');
 })->name('pagina-2');
 
+Route::get('/pagina-4', function() {
+    return view('provaPagina4');
+})->name('pagina-4');
