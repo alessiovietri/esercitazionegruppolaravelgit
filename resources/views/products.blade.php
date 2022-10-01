@@ -2,13 +2,11 @@
 
     @section('content')
         @foreach ($products as $product)
-    
+
             <div>
-                {{$product->name}} - 
-                {{$product->slug}} - 
-                {{$product->price}}
+                {{$product}}
             </div>
         @endforeach
-    
+
     @endsection
 
