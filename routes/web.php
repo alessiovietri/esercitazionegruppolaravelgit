@@ -26,3 +26,7 @@ Route::get('/pagina-2', function() {
 Route::get('/pagina-4', function() {
     return view('provaPagina4');
 })->name('pagina-4');
+
+Route::get('/prove3', 'ProveController@paginaProve')->name('prove-pagina-3');
+
+

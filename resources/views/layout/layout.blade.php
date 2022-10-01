@@ -28,6 +28,9 @@
         <li>
             <a href="{{ route('pagina-4') }}">Pagina 4</a>
         </li>
+        <li>
+            <a href="{{ route('prove-pagina-3') }}">Prove pagina 3</a>
+        </li>
     </ul>
 
     <main>
