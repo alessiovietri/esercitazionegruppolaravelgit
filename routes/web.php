@@ -14,11 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'ProductController@productlist')->name('home');
 
-Route::get('/pagina-1', function() {
-    return view('pageone');
-})->name('pagina-1');
+Route::get('/', function() {
+    return view('welcome');
+})->name('home');
 Route::get('/pagina-2', function() {
     return view('pagetwo');
 })->name('pagina-2');
@@ -29,4 +28,5 @@ Route::get('/pagina-4', function() {
 
 Route::get('/prove3', 'ProveController@paginaProve')->name('prove-pagina-3');
 
+Route::resource('products', 'ProductController');
 
