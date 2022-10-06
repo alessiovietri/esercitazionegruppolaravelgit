@@ -15,23 +15,15 @@
 
 <body>
 
-    <h1>Products</h1>
+    <header>
+        <ul>
+            <li>
+                <a href="{{route('products.index')}}">Prodotti</a>
+            </li>
+        </ul>
+    </header>
 
-    <ul>
-        <li>
-            <a href="{{ route('pagina-1') }}">Pagina 1</a>
-        </li>
-        <li>
-            <a href="{{ route('pagina-2') }}">Pagina 2</a>
-        </li>
-
-        <li>
-            <a href="{{ route('pagina-4') }}">Pagina 4</a>
-        </li>
-        <li>
-            <a href="{{ route('prove-pagina-3') }}">Prove pagina 3</a>
-        </li>
-    </ul>
+    
 
     <main>
         @yield('content')
