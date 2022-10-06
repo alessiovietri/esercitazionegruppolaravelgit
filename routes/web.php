@@ -16,6 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $products = Product::all();
-
     return view('products', ['products' => $products]);
 })->name('products');
