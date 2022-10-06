@@ -1,6 +1,8 @@
 @extends('layout.layout')
 
 @section('content')
+    <a href="{{route('products.create')}}">Aggiungi</a>
+
     <ul>
         @foreach ($products as $product)
             <li>
