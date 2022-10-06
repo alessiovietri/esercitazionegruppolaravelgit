@@ -10,6 +10,7 @@
                 {{$product->slug}}
                 {{$product->price}}
                 <a href="{{route('products.show', ['product' => $product->id])}}">Vedi</a>
+                <a href="{{route('products.edit', ['product' => $product->id])}}">Modifica</a>
             </li>
         @endforeach
     </ul>
