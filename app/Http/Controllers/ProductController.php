@@ -72,7 +72,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Product::find($id);
+
+        return view('products.edit', ['product' => $data]);
     }
 
     /**
@@ -84,7 +86,19 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:128',
+            'slug' => 'required|max:128',
+            'price' => 'nullable|numeric'
+        ]);
+
+        $data = $request->all();
+        $product = Product::find($id);
+
+        $product->update($data);
+        $product->save();
+
+        return redirect()->route('products.index');
     }
 
     /**
