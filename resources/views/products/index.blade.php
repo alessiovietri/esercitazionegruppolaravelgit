@@ -1,6 +1,13 @@
 @extends('layout.layout')
 
 @section('content')
+
+    @if (session('status'))
+        <p>
+            {{session('status')}}
+        </p>
+    @endif
+
     <a href="{{route('products.create')}}">Aggiungi</a>
 
     <ul>
@@ -11,6 +18,11 @@
                 {{$product->price}}
                 <a href="{{route('products.show', ['product' => $product->id])}}">Vedi</a>
                 <a href="{{route('products.edit', ['product' => $product->id])}}">Modifica</a>
+                <form action="{{route('products.destroy', ['product' => $product->id])}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Cancella</button>
+                </form>
             </li>
         @endforeach
     </ul>
