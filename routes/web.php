@@ -14,7 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $products = Product::all();
-    return view('products', ['products' => $products]);
-})->name('products');
+Route::get('/', 'ProductController@productlist')->name('home');
+
+Route::get('/pagina-1', function() {
+    return view('pageone');
+})->name('pagina-1');
+Route::get('/pagina-2', function() {
+    return view('pagetwo');
+})->name('pagina-2');
+
+Route::get('/pagina-4', function() {
+    return view('provaPagina4');
+})->name('pagina-4');
+
+Route::get('/prove3', 'ProveController@paginaProve')->name('prove-pagina-3');
+
+

@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    @foreach ($products as $product)
-        <div>
-            {{$product->name}} - 
-            {{$product->slug}} - 
-            {{$product->price}}
-        </div>
-    @endforeach
-</body>
-</html>
+@extends('layout.layout')
+
+    @section('content')
+        @foreach ($products as $product)
+
+            <div>
+                {{$product}}
+            </div>
+        @endforeach
+
+    @endsection
+
