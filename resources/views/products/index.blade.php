@@ -7,6 +7,7 @@
                 {{$product->name}}
                 {{$product->slug}}
                 {{$product->price}}
+                <a href="{{route('products.show', ['product' => $product->id])}}">Vedi</a>
             </li>
         @endforeach
     </ul>
