@@ -28,5 +28,15 @@ Route::get('/pagina-4', function() {
 
 Route::get('/prove3', 'ProveController@paginaProve')->name('prove-pagina-3');
 
-Route::resource('products', 'ProductController');
+Auth::routes();
+
+Route::middleware('auth')
+    ->name('admin.')
+    ->namespace('Admin')
+    ->prefix('admin')
+    ->group(function () {
+    Route::get('/dashboard', 'HomeController@index')->name('home');
+
+    Route::resource('products', 'ProductController');
+});
 

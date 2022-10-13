@@ -1,5 +1,9 @@
 @extends('layout.layout')
 
 @section('content')
-    <h1>ciao</h1>
+    <div id="root"></div>
+@endsection
+
+@section('js')
+    <script src="{{asset('js/front.js')}}"></script>
 @endsection

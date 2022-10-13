@@ -1,32 +1,34 @@
-@extends('layout.layout')
+@extends('layouts.app')
 
 @section('title', 'Aggiungi prodotto')
 
 @section('content')
 
-    @if ($errors->any())
-        <div class="alert alert-warning">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+<a href="{{route('admin.products.index')}}">Tutti i prodotti</a>
 
-    <form action="{{route('products.store')}}" method="POST">
-        @csrf
+@if ($errors->any())
+<div class="alert alert-warning">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" required value="{{old('name')}}">
+<form action="{{route('admin.products.store')}}" method="POST">
+    @csrf
 
-        <label for="slug">Slug</label>
-        <input type="text" name="slug" id="slug" required value="{{old('slug')}}">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" required value="{{old('name')}}">
 
-        <label for="price">Price</label>
-        <input type="number" name="price" id="price" value="{{old('price')}}">
+    <label for="slug">Slug</label>
+    <input type="text" name="slug" id="slug" required value="{{old('slug')}}">
 
-        <button type="submit">Submit</button>
+    <label for="price">Price</label>
+    <input type="number" name="price" id="price" value="{{old('price')}}">
 
-    </form>
+    <button type="submit">Submit</button>
+
+</form>
 @endsection

@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 use App\Product;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -50,7 +52,7 @@ class ProductController extends Controller
         $product->fill($data);
         $product->save();
 
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -98,7 +100,7 @@ class ProductController extends Controller
         $product->update($data);
         $product->save();
 
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -112,6 +114,6 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->delete();
 
-        return redirect()->route('products.index')->with('status', 'Prodotto eliminato con successo.');
+        return redirect()->route('admin.products.index')->with('status', 'Prodotto eliminato con successo.');
     }
 }
