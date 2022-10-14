@@ -26,7 +26,16 @@ Route::get('/pagina-4', function() {
     return view('provaPagina4');
 })->name('pagina-4');
 
+
 Route::get('/prove3', 'ProveController@paginaProve')->name('prove-pagina-3');
 
-Route::resource('products', 'ProductController');
+Auth::routes();
 
+
+
+Route::middleware('auth')->group(function(){
+   
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('products', 'ProductController');
+    
+});
