@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $categories = Category::all();
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -41,7 +43,8 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|max:128',
             'slug' => 'required|max:128',
-            'price' => 'nullable|numeric'
+            'price' => 'nullable|numeric',
+            'category_id' => 'nullable|exists:categories,id'
         ]);
 
         $data = $request->all();
@@ -73,8 +76,9 @@ class ProductController extends Controller
     public function edit($id)
     {
         $data = Product::find($id);
+        $categories = Category::all();
 
-        return view('products.edit', ['product' => $data]);
+        return view('products.edit', ['product' => $data, 'categories' => $categories]);
     }
 
     /**
@@ -89,7 +93,8 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|max:128',
             'slug' => 'required|max:128',
-            'price' => 'nullable|numeric'
+            'price' => 'nullable|numeric',
+            'category_id' => 'nullable|exists:categories,id'
         ]);
 
         $data = $request->all();

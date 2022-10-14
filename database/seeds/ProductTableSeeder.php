@@ -14,7 +14,7 @@ class ProductTableSeeder extends Seeder
     {
         $faker = \Faker\Factory::create('it_IT');
 
-        for($i = 0; $i < 10; $i++){
+        for($i = 0; $i < 1; $i++){
             $newFaker = new Product();
 
             $newFaker->name = $faker->word();

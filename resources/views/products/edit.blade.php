@@ -27,6 +27,13 @@
         <label for="price">Price</label>
         <input type="number" name="price" id="price" value="{{old('price', $product->price)}}">
 
+        <select name="category_id" id="category_id">
+            <option value="">Nessuna Categoria</option>
+            @foreach ($categories as $category)
+                <option {{($product->category_id!== null && $product->category_id==$category->id)?'selected':''}} value="{{$category->id}}">{{$category->name}}</option>
+            @endforeach
+        </select>
+
         <button type="submit">Save</button>
 
     </form>
