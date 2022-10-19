@@ -77,6 +77,7 @@
                 <li>
                     <a href="{{route('products.index')}}">Prodotti</a>
                     <a href="{{route('categories.index')}}">Categorie</a>
+                    <a href="{{route('orders.index')}}">Ordini</a>
                 </li>
             </ul>
         </header>
