@@ -1,41 +1,22 @@
 <template>
     <div id="main-container">
         <h1>Benvenuto, Guest</h1>
-        <div class="counter-container">
-            <div>
-                <button @click="updateCounter('-')">
-                    -
-                </button>
-            </div>
-            <div>
-                {{ counter }}
-            </div>
-            <div>
-                <button @click="updateCounter('+')">
-                    +
-                </button>
-            </div>
-        </div>
+
+        <prodotti/>
+        
+        
     </div>
 </template>
 
 <script>
+
+import prodotti from '../prodotti/prodotti.vue'
     export default {
         name: "App",
-        components: { },
-        data() {
-            return {
-                counter: 0
-            }
+        components: { 
+            prodotti 
         },
-        methods: {
-            updateCounter(mode) {
-                if(mode == '+')
-                    this.counter++;
-                else
-                    this.counter--;
-            }
-        }
+       
     }
 </script>
 
