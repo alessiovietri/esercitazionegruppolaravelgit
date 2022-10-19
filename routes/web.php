@@ -17,7 +17,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function() {
     return view('welcome');
-})->name('home');
+})->name('welcome');
+
+Auth::routes();
+
+Route::middleware('auth')->group(function(){
+
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('products', 'ProductController');
+    Route::resource('categories', 'CategoryController');
+
+});
+
+
+
+// TEST
 Route::get('/pagina-2', function() {
     return view('pagetwo');
 })->name('pagina-2');
@@ -26,17 +40,4 @@ Route::get('/pagina-4', function() {
     return view('provaPagina4');
 })->name('pagina-4');
 
-
 Route::get('/prove3', 'ProveController@paginaProve')->name('prove-pagina-3');
-
-Auth::routes();
-
-
-
-Route::middleware('auth')->group(function(){
-   
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::resource('products', 'ProductController');
-    Route::resource('categories', 'CategoryController');
-    
-});

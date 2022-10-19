@@ -14,23 +14,11 @@
 </head>
 
 <body>
-
-    <header>
-        <ul>
-            <li>
-                <a href="{{route('products.index')}}">Prodotti</a>
-                <a href="{{route('categories.index')}}">Categorie</a>
-            </li>
-        </ul>
-    </header>
-
-    
-
     <main>
         @yield('content')
     </main>
 
-    <script src="@yield('js')"></script>
+    @yield('js')
 </body>
 
 </html>
