@@ -14,23 +14,11 @@
 </head>
 
 <body>
-
-    <h1>Products</h1>
-
-    <ul>
-        <li>
-            <a href="{{ route('pagina-1') }}">Pagina 1</a>
-        </li>
-        <li>
-            <a href="{{ route('pagina-2') }}">Pagina 2</a>
-        </li>
-    </ul>
-
     <main>
         @yield('content')
     </main>
 
-    <script src="@yield('js')"></script>
+    @yield('js')
 </body>
 
 </html>
