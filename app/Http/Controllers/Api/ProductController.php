@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::with(['category', 'orders'])->paginate(2);
+        $product = Product::with(['category', 'orders'])->paginate(8);
 
         return response()->json([
             'success' => true,
@@ -41,5 +41,5 @@ class ProductController extends Controller
         ]);
     }
 
-    
+
 }

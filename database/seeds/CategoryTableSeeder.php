@@ -1,8 +1,8 @@
 <?php
 
-use App\Category;
 use Illuminate\Database\Seeder;
-
+use App\Category;
+use Illuminate\Support\Str;
 
 class CategoryTableSeeder extends Seeder
 {
@@ -13,9 +13,9 @@ class CategoryTableSeeder extends Seeder
         for($i = 0; $i < 10; $i++){
             $newFaker = new Category();
 
-            $newFaker->name = $faker->word();
-            $newFaker->slug = $faker->word();
-            
+            $name = $faker->word().' '.rand(1000, 9999);
+            $newFaker->name = $name;
+            $newFaker->slug = Str::slug($name);
 
             $newFaker->save();
         }

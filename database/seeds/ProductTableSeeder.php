@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\Product;
+use App\Category;
+use Illuminate\Support\Str;
 
 class ProductTableSeeder extends Seeder
 {
@@ -14,11 +16,13 @@ class ProductTableSeeder extends Seeder
     {
         $faker = \Faker\Factory::create('it_IT');
 
-        for($i = 0; $i < 10; $i++){
+        for($i = 0; $i < 100; $i++){
             $newFaker = new Product();
 
-            $newFaker->name = $faker->word();
-            $newFaker->slug = $faker->word();
+            $name = $faker->word().' '.rand(1000, 9999);
+            $newFaker->name = $name;
+            $newFaker->slug = Str::slug($name);
+            $newFaker->category_id = Category::inRandomOrder()->first()->id;
             $newFaker->price = $faker->randomFloat(2,1,100);
 
             $newFaker->save();

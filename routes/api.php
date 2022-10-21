@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('categories', 'Api\CategoryController@index');
 Route::get('products', 'Api\ProductController@index');
 Route::get('products/{id}', 'Api\ProductController@show');
