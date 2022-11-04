@@ -1933,6 +1933,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       categories: [],
+      selectedCategory: null,
       prodotti: [],
       loadingProducts: false,
       currentPage: 1,
@@ -1941,6 +1942,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    selectCategory: function selectCategory(category) {
+      this.selectedCategory = category;
+      this.currentPage = 1;
+      this.getProducts();
+    },
     getCategories: function getCategories() {
       var _this = this;
 
@@ -1967,7 +1973,8 @@ __webpack_require__.r(__webpack_exports__);
       this.loadingProducts = true;
       axios.get("/api/products", {
         params: {
-          page: this.currentPage
+          page: this.currentPage,
+          category: this.selectedCategory
         }
       }).then(function (response) {
         _this2.prodotti = response.data.results.data;
@@ -2015,7 +2022,11 @@ var render = function render() {
     attrs: {
       id: "main-container"
     }
-  }, [_c("h1", [_vm._v("Benvenuto, Guest")]), _vm._v(" "), _c("prodotti")], 1);
+  }, [_c("h1", [_vm._v("Benvenuto, Guest")]), _vm._v(" "), _c("a", {
+    attrs: {
+      href: "#"
+    }
+  }), _vm._v(" "), _c("prodotti")], 1);
 };
 
 var staticRenderFns = [];
@@ -2039,18 +2050,23 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("main", [_c("div", [_c("h2", [_vm._v("\n            Categorie\n        ")]), _vm._v(" "), _c("ul", {
+  return _c("main", [_c("div", [_c("h2", [_vm._v("\n            Categorie\n        ")]), _vm._v(" "), _c("h6", [_vm._v("\n            SELEZIONATA: " + _vm._s(_vm.selectedCategory ? _vm.selectedCategory.name : "-") + "\n        ")]), _vm._v(" "), _c("ul", {
     staticClass: "categories"
   }, _vm._l(_vm.categories, function (category, index) {
     return _c("li", {
-      key: index
+      key: index,
+      on: {
+        click: function click($event) {
+          return _vm.selectCategory(category);
+        }
+      }
     }, [_vm._v("\n                " + _vm._s(category.name) + "\n            ")]);
   }), 0)]), _vm._v(" "), _c("div", [_c("h2", [_vm._v("\n            Prodotti\n        ")]), _vm._v(" "), _c("div", {
     staticClass: "products-container"
   }, _vm._l(_vm.prodotti, function (prodotto, index) {
     return _c("div", {
       key: index
-    }, [_c("h3", [_vm._v("\n                    " + _vm._s(prodotto.name) + "\n                ")]), _vm._v(" "), _c("div", [_c("span", [_vm._v("\n                        € " + _vm._s(prodotto.price) + "\n                    ")])])]);
+    }, [_c("h3", [_vm._v("\n                    " + _vm._s(prodotto.name) + "\n                ")]), _vm._v(" "), _c("h4", [_vm._v("\n                    " + _vm._s(prodotto.category ? prodotto.category.name : "-") + "\n                ")]), _vm._v(" "), _c("div", [_c("span", [_vm._v("\n                        € " + _vm._s(prodotto.price) + "\n                    ")])])]);
   }), 0), _vm._v(" "), _c("div", {
     staticClass: "links-container"
   }, [_c("div", [_c("button", {
@@ -2092,7 +2108,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "main[data-v-23a70e41] {\n  display: flex;\n  text-align: left;\n}\nmain .categories > li[data-v-23a70e41] {\n  transition: all 0.2s ease-in-out;\n  padding: 2px 4px;\n}\nmain .categories > li[data-v-23a70e41]:hover {\n  cursor: pointer;\n  background-color: blue;\n  color: white;\n}\nmain > div[data-v-23a70e41]:first-of-type {\n  width: 20%;\n}\nmain > div[data-v-23a70e41]:last-of-type {\n  width: 80%;\n}\nmain > div:last-of-type .products-container[data-v-23a70e41] {\n  display: flex;\n  flex-wrap: wrap;\n}\nmain > div:last-of-type .products-container > div[data-v-23a70e41] {\n  width: 25%;\n  border: 1px solid black;\n  padding: 15px;\n}\nmain > div:last-of-type .links-container[data-v-23a70e41] {\n  display: flex;\n}\nmain > div:last-of-type .links-container > div[data-v-23a70e41] {\n  width: 50%;\n  padding: 5px;\n}\nmain > div:last-of-type .links-container > div[data-v-23a70e41]:first-of-type {\n  text-align: right;\n}", ""]);
+exports.push([module.i, "main[data-v-23a70e41] {\n  display: flex;\n  text-align: left;\n}\nmain .categories > li[data-v-23a70e41] {\n  transition: all 0.2s ease-in-out;\n  padding: 2px 4px;\n}\nmain .categories > li[data-v-23a70e41]:hover {\n  cursor: pointer;\n  background-color: blue;\n  color: white;\n}\nmain > div[data-v-23a70e41]:first-of-type {\n  width: 20%;\n}\nmain > div[data-v-23a70e41]:last-of-type {\n  width: 80%;\n}\nmain > div:last-of-type .products-container[data-v-23a70e41] {\n  display: flex;\n  flex-wrap: wrap;\n}\nmain > div:last-of-type .products-container > div[data-v-23a70e41] {\n  width: 25%;\n  border: 1px solid black;\n  padding: 15px;\n}\nmain > div:last-of-type .links-container[data-v-23a70e41] {\n  display: flex;\n}\nmain > div:last-of-type .links-container > div[data-v-23a70e41] {\n  width: 50%;\n  padding: 5px;\n}\nmain > div:last-of-type .links-container > div[data-v-23a70e41]:first-of-type {\n  text-align: right;\n}\n.hidden[data-v-23a70e41] {\n  display: none;\n}", ""]);
 
 // exports
 

@@ -4,8 +4,11 @@
             <h2>
                 Categorie
             </h2>
+            <h6>
+                SELEZIONATA: {{ selectedCategory ? selectedCategory.name : '-' }}
+            </h6>
             <ul class="categories">
-                <li v-for="(category, index) in categories" :key="index">
+                <li v-for="(category, index) in categories" :key="index" @click="selectCategory(category)">
                     {{ category.name }}
                 </li>
             </ul>
@@ -19,6 +22,9 @@
                     <h3>
                         {{ prodotto.name }}
                     </h3>
+                    <h4>
+                        {{ prodotto.category ? prodotto.category.name : '-' }}
+                    </h4>
                     <div>
                         <span>
                             € {{ prodotto.price }}
@@ -49,6 +55,7 @@ export default {
     data() {
         return {
             categories: [],
+            selectedCategory: null,
             prodotti: [],
             loadingProducts: false,
             currentPage: 1,
@@ -57,6 +64,12 @@ export default {
         };
     },
     methods: {
+        selectCategory(category) {
+            this.selectedCategory = category;
+            this.currentPage = 1;
+
+            this.getProducts();
+        },
         getCategories() {
             axios.get("/api/categories").then((response) => {
                 this.categories = response.data.results;
@@ -80,7 +93,8 @@ export default {
 
             axios.get("/api/products", {
                 params: {
-                    page: this.currentPage
+                    page: this.currentPage,
+                    category: this.selectedCategory
                 }
             }).then((response) => {
                 this.prodotti = response.data.results.data;
@@ -160,5 +174,8 @@ export default {
                 }
             }
         }
+    }
+    .hidden{
+        display: none;
     }
 </style>

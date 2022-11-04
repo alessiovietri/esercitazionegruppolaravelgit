@@ -3,8 +3,8 @@
         <h1>Benvenuto, Guest</h1>
 
         <prodotti/>
-        
-        
+
+
     </div>
 </template>
 
@@ -13,10 +13,10 @@
 import prodotti from '../prodotti/prodotti.vue'
     export default {
         name: "App",
-        components: { 
-            prodotti 
+        components: {
+            prodotti
         },
-       
+
     }
 </script>
 
